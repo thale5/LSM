@@ -5,7 +5,7 @@ using System.Text;
 using System.Diagnostics;
 using UnityEngine;
 
-namespace LoadingScreenMod
+namespace LoadingScreenModTest
 {
     public static class Profiling
     {

@@ -5,7 +5,7 @@ using ColossalFramework.IO;
 using ColossalFramework.UI;
 using ICities;
 
-namespace LoadingScreenMod
+namespace LoadingScreenModTest
 {
     public class Settings
     {

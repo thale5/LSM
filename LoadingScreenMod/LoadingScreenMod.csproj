@@ -7,8 +7,8 @@
     <ProjectGuid>{9A93D6F8-39A9-4DD1-838A-97287FE0E5E7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LoadingScreenMod</RootNamespace>
-    <AssemblyName>LoadingScreenMod</AssemblyName>
+    <RootNamespace>LoadingScreenModTest</RootNamespace>
+    <AssemblyName>LoadingScreenModTest</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

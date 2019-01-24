@@ -1,17 +1,17 @@
 ﻿using ICities;
 
-namespace LoadingScreenMod
+namespace LoadingScreenModTest
 {
     public sealed class Mod : IUserMod, ILoadingExtension
     {
         static bool created = false;
-        public string Name => "Loading Screen Mod";
+        public string Name => "Loading Screen Mod [Test]";
         public string Description => "New loading options";
 
         public void OnSettingsUI(UIHelperBase helper) => Settings.settings.OnSettingsUI(helper);
         public void OnCreated(ILoading loading) { }
         public void OnReleased() { }
-        public void OnLevelLoaded(LoadMode mode) { }
+        public void OnLevelLoaded(LoadMode mode) { Util.DebugPrint("OnLevelLoaded at", Profiling.Millis); }
         public void OnLevelUnloading() { }
 
         public void OnEnabled()

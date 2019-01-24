@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 using ColossalFramework.Packaging;
 
-namespace LoadingScreenMod
+namespace LoadingScreenModTest
 {
     internal sealed class MemStream : Stream
     {

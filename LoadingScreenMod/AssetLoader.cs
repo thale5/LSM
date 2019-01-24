@@ -14,7 +14,7 @@ using UnityEngine;
 using static AssetDataWrapper;
 using static ColossalFramework.Plugins.PluginManager;
 
-namespace LoadingScreenMod
+namespace LoadingScreenModTest
 {
     /// <summary>
     /// LoadCustomContent coroutine from LoadingManager.
@@ -164,6 +164,7 @@ namespace LoadingScreenMod
             lastMillis = Profiling.Millis;
             LoadingScreen.instance.DualSource.Add("Custom Assets");
             LoadingManager.instance.m_loadingProfilerCustomContent.BeginLoading("Calculating asset load order");
+            Util.DebugPrint("GetLoadQueue", Profiling.Millis);
             Package.Asset[] queue = GetLoadQueue(styleBuildings);
             Util.DebugPrint("LoadQueue", queue.Length, Profiling.Millis);
             LoadingManager.instance.m_loadingProfilerCustomContent.EndLoading();
@@ -177,9 +178,11 @@ namespace LoadingScreenMod
             for (i = 0; i < queue.Length; i++)
             {
                 Package.Asset assetRef = queue[i];
+                Console.WriteLine(string.Concat("[LSMT] ", i, ": ", Profiling.Millis, " ", assetCount, " ", Sharing.instance.currentCount, " ",
+                    assetRef.fullName, Sharing.instance.ThreadStatus));
 
                 if ((i & 63) == 0)
-                    PrintMem(i);
+                    PrintMem();
 
                 Sharing.instance.WaitForWorkers();
 
@@ -263,18 +266,19 @@ namespace LoadingScreenMod
             LevelLoader.instance.assetsFinished = true;
         }
 
-        internal static void PrintMem(int i = -1)
+        internal static void PrintMem()
         {
-            string s = i >= 0 ? "[LSM] Mem " + i + " " : "[LSM] Mem ";
-            s += Profiling.Millis.ToString();
+            string s = "[LSMT] Mem ";
 
             try
             {
                 if (Application.platform == RuntimePlatform.WindowsPlayer)
                 {
                     MemoryAPI.GetUsage(out int pfMegas, out int wsMegas);
-                    s += string.Concat(" ", wsMegas.ToString(), " ", pfMegas.ToString());
+                    s += string.Concat(wsMegas.ToString(), " ", pfMegas.ToString(), " ");
                 }
+
+                s = string.Concat(s, GC.CollectionCount(0).ToString());
 
                 if (Sharing.HasInstance)
                     s += string.Concat(" ", Sharing.instance.Misses.ToString(), " ", Sharing.instance.WorkersAhead.ToString());
@@ -452,6 +456,7 @@ namespace LoadingScreenMod
             List<Package.Asset>[] queues = { new List<Package.Asset>(32), new List<Package.Asset>(64), new List<Package.Asset>(4),  new List<Package.Asset>(4),
                                              new List<Package.Asset>(16), new List<Package.Asset>(64), new List<Package.Asset>(32), new List<Package.Asset>(32) };
 
+            Util.DebugPrint("Sorted at", Profiling.Millis);
             SteamHelper.DLC_BitMask notMask = ~SteamHelper.GetOwnedDLCMask();
             bool loadEnabled = Settings.settings.loadEnabled, loadUsed = Settings.settings.loadUsed;
             //PrintPackages(packages);

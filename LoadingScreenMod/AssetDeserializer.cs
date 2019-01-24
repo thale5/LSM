@@ -6,7 +6,7 @@ using UnityEngine;
 using ColossalFramework.Packaging;
 using ColossalFramework;
 
-namespace LoadingScreenMod
+namespace LoadingScreenModTest
 {
     internal sealed class AssetDeserializer
     {

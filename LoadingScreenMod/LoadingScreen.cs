@@ -5,7 +5,7 @@ using System.Reflection;
 using System;
 using System.Collections.Generic;
 
-namespace LoadingScreenMod
+namespace LoadingScreenModTest
 {
     public sealed class LoadingScreen : DetourUtility<LoadingScreen>
     {
@@ -230,7 +230,7 @@ namespace LoadingScreenMod
             if (inst.animationLoaded)
             {
                 Quaternion q = Quaternion.AngleAxis(inst.timer * rotationSpeed, Vector3.back);
-                inst.animationMaterial.color = new Color(0.3f, 0.6f, 1f, 1f);
+                inst.animationMaterial.color = new Color(1.0f, 0.8f, 0.7f, 1f);
                 Mesh amesh = inst.animationMesh;
 
                 if (inst.animationMaterial.SetPass(0))

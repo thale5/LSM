@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using ColossalFramework.Packaging;
 
-namespace LoadingScreenMod
+namespace LoadingScreenModTest
 {
     internal sealed class UsedAssets : Instance<UsedAssets>
     {

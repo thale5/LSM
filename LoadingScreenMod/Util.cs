@@ -5,11 +5,11 @@ using System.IO;
 using System.Collections.Generic;
 using ColossalFramework.PlatformServices;
 
-namespace LoadingScreenMod
+namespace LoadingScreenModTest
 {
     public static class Util
     {
-        public static void DebugPrint(params object[] args) => Console.WriteLine(string.Concat("[LSM] ", " ".OnJoin(args)));
+        public static void DebugPrint(params object[] args) => Console.WriteLine(string.Concat("[LSMT] ", " ".OnJoin(args)));
         public static string OnJoin(this string delim, IEnumerable<object> args) => string.Join(delim, args.Select(o => o?.ToString() ?? "null").ToArray());
 
         internal static void InvokeVoid(object instance, string method)

@@ -6,9 +6,9 @@ using System.Text;
 using ColossalFramework.Packaging;
 using UnityEngine;
 using static CustomAssetMetaData.Type;
-using static LoadingScreenMod.AssetReport;
+using static LoadingScreenModTest.AssetReport;
 
-namespace LoadingScreenMod
+namespace LoadingScreenModTest
 {
     internal sealed class AssetReport : Instance<AssetReport>
     {
@@ -172,7 +172,7 @@ namespace LoadingScreenMod
                 w.WriteLine(@"a:hover {text-decoration:underline;}");
                 w.WriteLine(@"</style></head><body>");
 
-                H1(Enc(cityName));
+                H1(cityName);
                 Italics(@"Assets report for Cities: Skylines.");
                 Italics(@"To stop saving these files, disable the option ""Save assets report"" in Loading Screen Mod.");
                 string[] mainHeadings = allHeadings.Take(6).ToArray();

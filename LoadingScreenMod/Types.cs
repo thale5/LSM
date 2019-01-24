@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 
-namespace LoadingScreenMod
+namespace LoadingScreenModTest
 {
     /// <summary>
     /// A thread-safe queue. Enqueue never blocks. Dequeue blocks while the queue is empty.

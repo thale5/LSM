@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Threading;
 using UnityEngine;
-using static LoadingScreenMod.Matcher;
+using static LoadingScreenModTest.Matcher;
 
-namespace LoadingScreenMod
+namespace LoadingScreenModTest
 {
     public sealed class PrefabLoader : DetourUtility<PrefabLoader>
     {

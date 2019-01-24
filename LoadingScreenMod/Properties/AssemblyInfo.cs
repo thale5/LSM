@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("LoadingScreenMod")]
+[assembly: AssemblyTitle("LoadingScreenModTest")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("LoadingScreenMod")]
+[assembly: AssemblyProduct("LoadingScreenModTest")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("9a93d6f8-39a9-4dd1-838a-97287fe0e5e7")]
+[assembly: Guid("9b93d6f8-39a9-4dd1-838a-97287fe0e533")]
 
 // Version information for an assembly consists of the following four values:
 //

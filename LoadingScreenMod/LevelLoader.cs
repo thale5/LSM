@@ -10,7 +10,7 @@ using ColossalFramework.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace LoadingScreenMod
+namespace LoadingScreenModTest
 {
     /// <summary>
     /// LoadLevelCoroutine from LoadingManager.
@@ -68,7 +68,7 @@ namespace LoadingScreenMod
                 if (activated)
                 {
                     Settings s = Settings.settings;
-                    Util.DebugPrint("Options: 121", s.loadEnabled, s.loadUsed, s.shareTextures, s.shareMaterials, s.shareMeshes, s.reportAssets, s.skipPrefabs);
+                    Util.DebugPrint("Options: 61", s.loadEnabled, s.loadUsed, s.shareTextures, s.shareMaterials, s.shareMeshes, s.reportAssets, s.skipPrefabs);
 
                     LoadingManager.instance.SetSceneProgress(0f);
                     instance.cityName = asset?.name ?? "NewGame";
@@ -231,6 +231,7 @@ namespace LoadingScreenMod
                 loadingLock = Util.Get(LoadingManager.instance, "m_loadingLock");
                 mainThreadQueue = (Queue<IEnumerator>) Util.Get(LoadingManager.instance, "m_mainThreadQueue");
 
+
                 if (!string.IsNullOrEmpty(playerScene))
                 {
                     LoadingManager.instance.m_loadingProfilerScenes.BeginLoading(playerScene);
@@ -289,6 +290,8 @@ namespace LoadingScreenMod
                 if (Settings.settings.SkipPrefabs)
                     LoadingManager.instance.QueueLoadingAction(PrefabLoader.RemoveSkippedFromSimulation());
 
+                Util.DebugPrint("mainThreadQueue len", mainThreadQueue.Count, "at", Profiling.Millis);
+
                 // Some major mods (Network Extensions 1 & 2, Single Train Track, Metro Overhaul) have a race condition issue
                 // in their NetInfo Installer. Everything goes fine if LoadCustomContent() below is NOT queued before the
                 // said Installers have finished. This is just a workaround for the issue. The actual fix should be in
@@ -305,6 +308,8 @@ namespace LoadingScreenMod
                     }
                 }
                 while (i > 0);
+
+                Util.DebugPrint("mainThreadQueue len 0 at", Profiling.Millis);
 
                 AssetLoader.Create().Setup();
                 LoadingManager.instance.QueueLoadingAction(AssetLoader.instance.LoadCustomContent());
@@ -387,6 +392,7 @@ namespace LoadingScreenMod
             PrefabLoader.instance?.Dispose();
             LoadingManager.instance.QueueLoadingAction(LoadingComplete());
             knownFastLoads[asset.checksum] = true;
+            Util.DebugPrint("Waiting at", Profiling.Millis);
             AssetLoader.PrintMem();
         }
 
